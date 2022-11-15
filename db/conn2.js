@@ -29,6 +29,6 @@ db.once("open", function () {
     console.log("Connected successfully");
 });
 
-app.listen(5000, () => {
-  console.log("Server is running at port 5000");
+app.listen(5001, () => {
+  console.log("Server is running at port 5001");
 });
