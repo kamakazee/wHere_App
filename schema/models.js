@@ -44,8 +44,20 @@ const ElementSchema = new mongoose.Schema({
         default:"defaultImage"},
   });
 
+  var imageSchema = new mongoose.Schema({
+    name: String,
+    desc: String,
+    img:
+    {
+        data: Buffer,
+        contentType: String
+    }
+});
+
+
+const Image = mongoose.model("Image", imageSchema);
 const User = mongoose.model("User", UserSchema);
 const Element = mongoose.model("Element", ElementSchema);
 const Item =  mongoose.model("Item", ItemSchema);
 
-module.exports = {userModel: User, elementModel: Element, itemModel: Item};
+module.exports = {userModel: User, elementModel: Element, itemModel: Item, imageModel: Image};

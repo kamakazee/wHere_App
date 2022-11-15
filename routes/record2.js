@@ -1,8 +1,7 @@
 const { application } = require("express");
 const express = require("express");
 
-const {userModel, elementModel, itemModel} = require("../schema/models.js")
-
+const {userModel, elementModel, itemModel, imageModel} = require("../schema/models.js")
 
 const app = express();
 
@@ -73,5 +72,22 @@ app.get("/items/:name", async (request, response) => {
   }
     
 })
+
+app.get('/images', (req, res) => {
+  console.log("Inside of GET")
+
+  imageModel.find({}, (err, items) => {           //find({}
+      if (err) {
+          console.log(err);
+          res.status(500).send('An error occurred', err);
+      }
+      else {
+          console.log(items)
+
+          res.send(items)
+      }
+  });
+});
+
 
 module.exports =  app;
